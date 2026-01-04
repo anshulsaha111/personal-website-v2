@@ -1,0 +1,39 @@
+# When to Fine-Tune vs. Prompt Engineer
+
+This is the question I get asked most often by teams building with LLMs.
+
+The answer is almost always: start with prompts.
+
+## The Fine-Tuning Fantasy
+
+Fine-tuning sounds appealing. Train a model specifically for your use case. Better performance. Lower latency. Proprietary moat.
+
+The reality is messier.
+
+## Hidden Costs
+
+**Data collection.** You need hundreds to thousands of high-quality examples. Most teams underestimate this by 10x.
+
+**Maintenance burden.** Models drift. Data changes. You're now in the ML operations business.
+
+**Iteration speed.** Prompt changes ship in minutes. Fine-tuning runs take hours or days.
+
+## When Fine-Tuning Makes Sense
+
+That said, there are legitimate reasons to fine-tune:
+
+- Consistent style or format requirements
+- Significant latency constraints
+- Large-scale cost optimization
+- Specialized domain knowledge
+
+## My Heuristic
+
+If you can solve 80% of the problem with prompting, do that first. Ship it. Learn from real usage.
+
+Fine-tune when you've hit the ceiling and have the examples to prove it.
+
+---
+
+*Essay in development. More examples coming.*
+

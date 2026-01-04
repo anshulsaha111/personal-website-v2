@@ -1,0 +1,34 @@
+# Why Most AI Products Fail at Launch
+
+There's a pattern I've seen across dozens of AI launches. The demo is magical. The pilot goes well. Then you ship to production and everything falls apart.
+
+## The Demo Problem
+
+Demos are optimized for the happy path. They show what the model *can* do, not what it *will* do when faced with the chaos of real user input.
+
+Every AI product team eventually learns this lesson. The question is whether they learn it before or after launch.
+
+## What Actually Goes Wrong
+
+The failure modes are predictable:
+
+**Data drift.** The training data looks nothing like production data. Users type things you never imagined. Edge cases aren't edge cases—they're 30% of your traffic.
+
+**Latency expectations.** That 2-second response time felt fine in demos. In production, users click away after 500ms.
+
+**Trust calibration.** Users either trust the AI too much or not at all. Neither is good.
+
+## Building for Survival
+
+The products that survive contact with real users share a few traits:
+
+1. They ship with monitoring from day one
+2. They have graceful degradation built in
+3. They set expectations correctly upfront
+
+None of this is glamorous. But it's the difference between a demo and a product.
+
+---
+
+*This is where the rest of the essay would go. Currently stubbed for development.*
+
