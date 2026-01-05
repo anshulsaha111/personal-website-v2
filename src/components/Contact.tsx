@@ -6,11 +6,11 @@ import { motion } from 'framer-motion'
 export function Contact() {
   return (
     <Section id="contact" className="pb-16">
-      <hr className="rule mb-8" />
+      <hr className="rule mb-6" />
       
       <div className="text-center max-w-prose mx-auto">
         <motion.h2
-          className="font-headline text-section text-foreground mb-8"
+          className="font-headline text-section text-foreground mb-6"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -20,7 +20,7 @@ export function Contact() {
         </motion.h2>
 
         <motion.p
-          className="text-body-lg text-foreground/75 mb-10 leading-relaxed"
+          className="text-body-lg text-foreground/75 mb-7 leading-relaxed"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

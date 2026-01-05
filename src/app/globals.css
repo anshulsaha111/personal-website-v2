@@ -208,12 +208,12 @@
      ============================================== */
   
   .section-padding {
-    padding-top: theme('spacing.section');
+    padding-top: theme('spacing.section-sm');
     padding-bottom: theme('spacing.section');
   }
   
   .section-padding-sm {
-    padding-top: theme('spacing.section-sm');
+    padding-top: theme('spacing.block');
     padding-bottom: theme('spacing.section-sm');
   }
   

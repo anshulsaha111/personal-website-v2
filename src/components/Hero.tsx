@@ -27,7 +27,7 @@ export function Hero() {
       <div className="relative z-10 text-center max-w-prose py-8 md:py-12">
         {/* Greeting - recedes into background */}
         <motion.p
-          className="font-body text-body text-muted mb-8 tracking-wide"
+          className="font-body text-body text-muted mb-6 tracking-wide"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -37,7 +37,7 @@ export function Hero() {
         
         {/* Headline - structured with deliberate line breaks */}
         <motion.h1
-          className="font-headline text-hero text-foreground leading-[1.1] mb-8 font-light"
+          className="font-headline text-hero text-foreground leading-[1.1] mb-6 font-light"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}

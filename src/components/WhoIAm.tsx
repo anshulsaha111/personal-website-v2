@@ -6,7 +6,7 @@ export function WhoIAm() {
   return (
     <Section id="about" width="content" spine>
       <div className="max-w-prose">
-        <h2 className="font-headline text-section text-foreground mb-8">
+        <h2 className="font-headline text-section text-foreground mb-6">
           who am i
         </h2>
         

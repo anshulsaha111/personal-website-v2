@@ -14,9 +14,9 @@ const essays = [
 export function Writing() {
   return (
     <Section id="writing" spine>
-      <hr className="rule mb-8" />
+      <hr className="rule mb-6" />
       
-      <h2 className="font-headline text-section text-foreground mb-8">
+      <h2 className="font-headline text-section text-foreground mb-6">
         writing
       </h2>
 

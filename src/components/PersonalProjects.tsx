@@ -24,13 +24,13 @@ const projects = [
 export function PersonalProjects() {
   return (
     <Section spine>
-      <hr className="rule mb-8" />
+      <hr className="rule mb-6" />
       
-      <h2 className="font-headline text-section text-foreground mb-8">
+      <h2 className="font-headline text-section text-foreground mb-6">
         personal projects
       </h2>
 
-      <div className="max-w-prose space-y-5">
+      <div className="max-w-prose space-y-4">
         {projects.map((project, index) => (
           <motion.div
             key={project.name}
@@ -39,7 +39,7 @@ export function PersonalProjects() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
           >
-            <div className="flex items-baseline justify-between mb-2">
+            <div className="flex items-baseline justify-between mb-1.5">
               <h3 className="text-large font-headline text-foreground">{project.name}</h3>
               <span className="text-small text-muted tabular-nums">{project.year}</span>
             </div>

@@ -85,12 +85,12 @@ const config: Config = {
         'margin-mobile': '24px',                   // Page margin (mobile)
         'margin-tablet': '48px',                   // Page margin (tablet)
         'margin-desktop': '64px',                  // Page margin (desktop)
-        'section': 'clamp(80px, 10vh, 120px)',     // Between sections (reduced ~17%)
-        'section-sm': 'clamp(56px, 7vh, 80px)',    // Smaller section gap (reduced ~17%)
-        'block': '40px',                           // Between content blocks (reduced ~17%)
-        'element': '20px',                         // Between elements (reduced ~17%)
-        'tight': '12px',                           // Tight element spacing (reduced 25%)
-        'micro': '8px',                            // Micro adjustments
+        'section': 'clamp(64px, 8vh, 96px)',       // Between sections (reduced ~20%)
+        'section-sm': 'clamp(45px, 6vh, 64px)',    // Smaller section gap (reduced ~20%)
+        'block': '32px',                           // Between content blocks (reduced ~20%)
+        'element': '16px',                         // Between elements (reduced ~20%)
+        'tight': '10px',                           // Tight element spacing (reduced ~17%)
+        'micro': '6px',                            // Micro adjustments
         'header': '41px',                          // Header height (reserved)
       },
       
