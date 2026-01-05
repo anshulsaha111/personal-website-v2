@@ -46,28 +46,27 @@
     /* Light mode (default) — Editorial palette */
     /* 
       Color philosophy:
-      - Background: warm off-white (unchanged)
-      - Foreground: deep ink with cool undertone (authoritative, timeless)
-      - Muted: neutral gray for secondary text
-      - Accent: muted slate blue (structural use only)
+      - Background: warm paper-like neutral (subtle warmth added)
+      - Foreground: warm brown (editorial, grounded)
+      - Muted: mid-tone brown for secondary text
+      - Accent: intentional signal for emphasis and interaction only
       - Rule: extremely subtle for document structure
       
-      Accent usage (structural only):
-      - Active navigation states
-      - Interactive underlines
-      - Section labels
-      - Structural markers
+      Accent usage (intentional signals only):
+      - Emphasized verbs or outcomes in copy
+      - Interactive elements (hover states, toggles, active nav)
+      - Micro UI signals indicating intent or state
       
       Accent NOT used for:
-      - Emphasis within prose
-      - Headings or body text
-      - Emotional highlighting
+      - Body text, section headers
+      - Decorative rules or backgrounds
+      - General emphasis (<10% of visible content)
     */
-    --color-background: #faf8f5;
-    --color-foreground: #1f1f1f;
-    --color-muted: #6e6e6e;
-    --color-accent: #5b7a8f;
-    --color-rule: rgba(31, 31, 31, 0.06);
+    --color-background: #F0EEEC;
+    --color-foreground: #5D4037;
+    --color-muted: #8D6E63;
+    --color-accent: #A1887F;
+    --color-rule: rgba(93, 64, 55, 0.06);
     
     /* Layout constants */
     --header-height: 41px;
@@ -78,15 +77,16 @@
 
   .dark {
     /* Dark mode — Editorial palette */
-    --color-background: #0f172a;
-    --color-foreground: #e8e8e8;
-    --color-muted: #9a9a9a;
-    --color-accent: #7a9aaf;
-    --color-rule: rgba(232, 232, 232, 0.06);
+    --color-background: #5F4238;
+    --color-foreground: #F0EEEC;
+    --color-muted: #BCAAA4;
+    --color-accent: #D7CCC8;
+    --color-rule: rgba(240, 238, 236, 0.06);
   }
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 60px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -96,12 +96,12 @@
   }
 
   ::selection {
-    background-color: rgba(91, 122, 143, 0.2);
+    background-color: rgba(161, 136, 127, 0.2);
     color: var(--color-foreground);
   }
   
   .dark ::selection {
-    background-color: rgba(122, 154, 175, 0.2);
+    background-color: rgba(215, 204, 200, 0.2);
   }
 
   /* Custom scrollbar */
@@ -114,20 +114,20 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: rgba(125, 117, 100, 0.3);
+    background-color: rgba(141, 110, 99, 0.3);
     border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(125, 117, 100, 0.5);
+    background-color: rgba(141, 110, 99, 0.5);
   }
   
   .dark ::-webkit-scrollbar-thumb {
-    background-color: rgba(100, 116, 139, 0.3);
+    background-color: rgba(188, 170, 164, 0.3);
   }
   
   .dark ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(100, 116, 139, 0.5);
+    background-color: rgba(188, 170, 164, 0.5);
   }
 }
 

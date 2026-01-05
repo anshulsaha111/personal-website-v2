@@ -12,18 +12,19 @@ export function WhoIAm() {
         
         <div className="prose-container text-foreground/90">
           <p>
-            I&apos;ve spent the last eight years at the intersection of machine learning and product — 
-            not as an observer, but as someone who builds. I started as a data scientist, 
+            I&apos;ve spent the last few years working at the intersection of machine learning and product - 
+            not from the sidelines, but inside messy, real systems. I started as a data scientist,
             which means I know what happens when a model meets messy data at 2AM.
           </p>
           <p>
-            Now I lead AI product teams. I translate research papers into shipped features. 
-            I sit between the ML engineers who want perfection and the users who just want it to work.
+            Over time, I moved into product because I cared less about models in isolation and more about 
+            whether they actually shipped, got used, and moved a business metric. Today, I work as an AI 
+            Product Manager - sitting between engineering teams and users.
           </p>
           <p>
-            My work has touched recommendation systems, search infrastructure, 
-            and more recently, generative AI applications. 
-            The thread connecting all of it: making complex systems feel simple.
+            My work has touched systems across analytics, supply chain, and generative AI - from LLM-powered 
+            internal tools to optimization engines running daily operations. The common thread in all of it: 
+            making complex systems feel simple.
           </p>
         </div>
       </div>

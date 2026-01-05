@@ -19,18 +19,18 @@ const config: Config = {
         
         // Light mode palette (editorial)
         light: {
-          bg: '#faf8f5',
-          text: '#1f1f1f',
-          accent: '#5b7a8f',
-          muted: '#6e6e6e',
+          bg: '#F0EEEC',
+          text: '#5D4037',
+          accent: '#A1887F',
+          muted: '#8D6E63',
         },
         
         // Dark mode palette (editorial)
         dark: {
-          bg: '#0f172a',
-          text: '#e8e8e8',
-          accent: '#7a9aaf',
-          muted: '#9a9a9a',
+          bg: '#5F4238',
+          text: '#F0EEEC',
+          accent: '#D7CCC8',
+          muted: '#BCAAA4',
         },
       },
       fontFamily: {

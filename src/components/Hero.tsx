@@ -22,9 +22,9 @@ import { motion } from 'framer-motion'
 
 export function Hero() {
   return (
-    <section className="relative min-h-[calc(100vh-41px)] flex flex-col items-center justify-center page-grid">
+    <section className="relative min-h-[calc(100vh-41px)] flex flex-col items-center justify-center w-full">
       {/* Main content - centered */}
-      <div className="relative z-10 text-center max-w-prose py-8 md:py-12">
+      <div className="relative z-10 text-center max-w-prose mx-auto px-6 py-8 md:py-12">
         {/* Greeting - recedes into background */}
         <motion.p
           className="font-body text-body text-muted mb-6 tracking-wide"

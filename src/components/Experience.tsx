@@ -11,7 +11,7 @@ const roles = [
 
 export function Experience() {
   return (
-    <Section spine width="full">
+    <Section id="experience" spine width="full">
       <hr className="rule mb-6" />
       
       <h2 className="font-headline text-section text-foreground mb-6">
@@ -33,7 +33,7 @@ export function Experience() {
             <p className="text-small text-muted/50 font-light tabular-nums sm:ml-auto">
               {role.dates}
             </p>
-          </div>
+            </div>
         ))}
       </div>
 

@@ -91,7 +91,7 @@ export function SelectedWork() {
             >
               <button
                 onClick={() => toggleProject(project.id)}
-                className="w-full py-6 flex items-start justify-between gap-6 text-left group transition-colors duration-300"
+                className="w-full py-4 flex items-start justify-between gap-6 text-left group transition-colors duration-300"
                 aria-expanded={isExpanded}
               >
                 <div className="flex-1 min-w-0">

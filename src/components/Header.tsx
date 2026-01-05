@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { useTheme } from './ThemeProvider'
 
 /**
@@ -14,17 +15,48 @@ import { useTheme } from './ThemeProvider'
  * - Compact height to reduce visual dominance
  * - Hairline divider marks structural boundary
  * - No motion, shadows, or decorative elements
+ * - Active section indicator provides subtle orientation
  */
 
 const navLinks = [
   { label: 'about', href: '#about' },
-  { label: 'work', href: '#projects' },
+  { label: 'projects', href: '#projects' },
+  { label: 'experience', href: '#experience' },
   { label: 'writing', href: '#writing' },
   { label: 'contact', href: '#contact' },
 ]
 
 export function Header() {
   const { theme, toggleTheme, isTransitioning } = useTheme()
+  const [activeSection, setActiveSection] = useState<string>('')
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px', // Trigger when section is ~30% into viewport
+      threshold: 0,
+    }
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(`#${entry.target.id}`)
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions)
+
+    // Observe all sections
+    navLinks.forEach((link) => {
+      const element = document.querySelector(link.href)
+      if (element) {
+        observer.observe(element)
+      }
+    })
+
+    return () => observer.disconnect()
+  }, [])
   
   return (
     <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm">
@@ -54,42 +86,42 @@ export function Header() {
           
           {/* Navigation links — secondary to content */}
           <div className="flex items-center gap-5 md:gap-6">
-            {navLinks.map((link) => (
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href
+              return (
               <a
                 key={link.href}
                 href={link.href}
-                className="
+                  className={`
                   text-caption 
-                  text-foreground/40 
+                    ${isActive ? 'text-foreground/80 border-b-2 border-foreground/50' : 'text-foreground/40'} 
                   hover:text-foreground/60 
-                  transition-colors 
+                    transition-all
                   duration-300 
                   font-body
-                "
+                    pb-0.5
+                  `}
               >
                 {link.label}
               </a>
-            ))}
-            
-            {/* Subtle separator before theme toggle */}
-            <span className="text-foreground/20 select-none" aria-hidden="true">·</span>
+              )
+            })}
             
             {/* Theme toggle — utilitarian, not emphasized */}
             <button
               onClick={toggleTheme}
               disabled={isTransitioning}
               className="
-                text-caption 
+                text-body
                 text-foreground/30 
                 hover:text-foreground/50 
                 transition-colors 
                 duration-300 
-                font-body 
                 disabled:opacity-50
               "
               aria-label={`Switch to ${theme === 'sun' ? 'dark' : 'light'} mode`}
             >
-              {theme === 'sun' ? 'dark' : 'light'}
+              {theme === 'sun' ? '🌙' : '☀️'}
             </button>
           </div>
         </nav>

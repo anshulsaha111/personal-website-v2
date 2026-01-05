@@ -40,7 +40,7 @@ export function Skills() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
           >
-            <p className="text-small text-accent mb-2 font-body">{group.label}</p>
+            <p className="text-small text-foreground/50 mb-2 font-body uppercase tracking-wide">{group.label}</p>
             <p className="text-body text-foreground/75 leading-relaxed">{group.items}</p>
           </motion.div>
         ))}
