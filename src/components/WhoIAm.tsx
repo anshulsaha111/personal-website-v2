@@ -1,16 +1,16 @@
 'use client'
 
-import { GardenSection } from './GardenSection'
+import { Section } from './Section'
 
 export function WhoIAm() {
   return (
-    <GardenSection id="about" gardenDensity="light" gardenPosition="sides">
-      <div className="max-w-prose mx-auto">
+    <Section id="about" width="content" spine>
+      <div className="max-w-prose">
         <h2 className="font-headline text-section text-foreground mb-8">
-          about me
+          who am i
         </h2>
         
-        <div className="prose-garden text-foreground/90">
+        <div className="prose-container text-foreground/90">
           <p>
             I&apos;ve spent the last eight years at the intersection of machine learning and product — 
             not as an observer, but as someone who builds. I started as a data scientist, 
@@ -27,6 +27,6 @@ export function WhoIAm() {
           </p>
         </div>
       </div>
-    </GardenSection>
+    </Section>
   )
 }

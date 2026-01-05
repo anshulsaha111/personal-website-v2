@@ -1,6 +1,6 @@
 'use client'
 
-import { GardenSection } from './GardenSection'
+import { Section } from './Section'
 import { CapabilityItem } from './CapabilityItem'
 
 const capabilities = [
@@ -15,16 +15,18 @@ const capabilities = [
 
 export function WhatIHelpWith() {
   return (
-    <GardenSection gardenDensity="medium" gardenPosition="bottom">
-      <h2 className="font-headline text-section text-foreground mb-10">
+    <Section spine>
+      <hr className="rule mb-8" />
+      
+      <h2 className="font-headline text-section text-foreground mb-8">
         what i help with
       </h2>
 
-      <div className="max-w-2xl">
+      <div className="max-w-prose">
         {capabilities.map((capability) => (
           <CapabilityItem key={capability} text={capability} />
         ))}
       </div>
-    </GardenSection>
+    </Section>
   )
 }

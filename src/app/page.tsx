@@ -1,13 +1,12 @@
 import {
   Header,
   Hero,
-  WhoIAm,
   WhatIHelpWith,
   SelectedWork,
+  Experience,
+  PersonalProjects,
   Writing,
-  Skills,
-  Timeline,
-  Beliefs,
+  WhoIAm,
   Contact,
 } from '@/components'
 
@@ -17,13 +16,12 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <WhoIAm />
         <WhatIHelpWith />
         <SelectedWork />
+        <Experience />
+        <PersonalProjects />
         <Writing />
-        <Skills />
-        <Timeline />
-        <Beliefs />
+        <WhoIAm />
         <Contact />
       </main>
     </>

@@ -1,28 +1,30 @@
 'use client'
 
-import { GardenSection } from './GardenSection'
+import { Section } from './Section'
 import { motion } from 'framer-motion'
 
 export function Contact() {
   return (
-    <GardenSection id="contact" gardenDensity="lush" gardenPosition="bottom" className="pb-32">
-      <div className="text-center max-w-2xl mx-auto">
+    <Section id="contact" className="pb-16">
+      <hr className="rule mb-8" />
+      
+      <div className="text-center max-w-prose mx-auto">
         <motion.h2
-          className="font-headline text-section text-foreground mb-6"
-          initial={{ opacity: 0, y: 20 }}
+          className="font-headline text-section text-foreground mb-8"
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
         >
           let&apos;s talk
         </motion.h2>
 
         <motion.p
-          className="text-body-lg text-foreground/75 mb-10"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-body-lg text-foreground/75 mb-10 leading-relaxed"
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
         >
           I&apos;m always interested in hard problems at the intersection of AI and product. 
           If you&apos;re building something ambitious, I&apos;d like to hear about it.
@@ -30,10 +32,10 @@ export function Contact() {
 
         <motion.div
           className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-body text-muted"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
         >
           <a
             href="mailto:hello@example.com"
@@ -67,6 +69,12 @@ export function Contact() {
           </a>
         </motion.div>
       </div>
-    </GardenSection>
+      
+      {/* Footer rule */}
+      <hr className="rule mt-section" />
+      <p className="text-caption text-muted text-center mt-element">
+        Designed with intention. Built with constraints.
+      </p>
+    </Section>
   )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { GardenSection } from './GardenSection'
+import { Section } from './Section'
 import { WritingItem } from './WritingItem'
 
 const essays = [
@@ -13,16 +13,18 @@ const essays = [
 
 export function Writing() {
   return (
-    <GardenSection id="writing" gardenDensity="medium" gardenPosition="sides">
-      <h2 className="font-headline text-section text-foreground mb-10">
+    <Section id="writing" spine>
+      <hr className="rule mb-8" />
+      
+      <h2 className="font-headline text-section text-foreground mb-8">
         writing
       </h2>
 
-      <div className="max-w-2xl">
+      <div className="max-w-prose">
         {essays.map((essay) => (
           <WritingItem key={essay.href} {...essay} />
         ))}
       </div>
-    </GardenSection>
+    </Section>
   )
 }

@@ -10,16 +10,16 @@ const roles = [
   { title: 'Data Scientist', company: 'Consulting', years: '2015–2017' },
 ]
 
-export function Timeline() {
+export function Experience() {
   return (
     <Section spine>
-      <hr className="rule mb-block" />
+      <hr className="rule mb-8" />
       
-      <h2 className="font-headline text-section text-foreground mb-10">
-        path
+      <h2 className="font-headline text-section text-foreground mb-8">
+        experience
       </h2>
 
-      <div className="max-w-prose space-y-3">
+      <div className="max-w-prose space-y-2">
         {roles.map((role, index) => (
           <motion.div
             key={role.years}
@@ -51,3 +51,4 @@ export function Timeline() {
     </Section>
   )
 }
+

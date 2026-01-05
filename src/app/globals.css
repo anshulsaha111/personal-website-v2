@@ -2,25 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ==============================================
+   GRID SYSTEM — Living Blueprint
+   ==============================================
+   
+   PHILOSOPHY:
+   The grid is visible in spirit, not in weight.
+   Alignment creates rhythm. Spacing creates hierarchy.
+   Structure leads. Content follows.
+   
+   BASE UNIT: 8px
+   All spacing derives from multiples of 8px.
+   
+   COLUMN STRUCTURE:
+   - 12-column grid as underlying structure
+   - Content typically spans 8-10 columns
+   - Margin notes occupy 2-3 columns
+   - Gutter: 24px (3 base units)
+   
+   MAX WIDTHS:
+   - grid:     1200px  — Full container
+   - content:  1000px  — Primary content area
+   - prose:    680px   — Optimal reading width
+   - narrow:   560px   — Focused content
+   - margin:   240px   — Annotation column
+   
+   PAGE MARGINS:
+   - Mobile:   24px
+   - Tablet:   48px  
+   - Desktop:  64px+
+   
+   SECTION SPACING:
+   - Between sections: 96-144px (responsive)
+   - Between blocks: 48px
+   - Between elements: 24px
+   - Tight spacing: 16px
+   - Micro adjustments: 8px
+   
+   ============================================== */
+
 @layer base {
   :root {
-    /* Sun mode (default) */
+    /* Light mode (default) — Editorial palette */
+    /* 
+      Color philosophy:
+      - Background: warm off-white (unchanged)
+      - Foreground: deep ink with cool undertone (authoritative, timeless)
+      - Muted: neutral gray for secondary text
+      - Accent: muted slate blue (structural use only)
+      - Rule: extremely subtle for document structure
+      
+      Accent usage (structural only):
+      - Active navigation states
+      - Interactive underlines
+      - Section labels
+      - Structural markers
+      
+      Accent NOT used for:
+      - Emphasis within prose
+      - Headings or body text
+      - Emotional highlighting
+    */
     --color-background: #faf8f5;
-    --color-foreground: #3d3929;
-    --color-muted: #7d7564;
-    --color-accent: #e86a33;
-    --color-leaf: #5a7c47;
-    --color-stem: #7d9a6a;
+    --color-foreground: #1f1f1f;
+    --color-muted: #6e6e6e;
+    --color-accent: #5b7a8f;
+    --color-rule: rgba(31, 31, 31, 0.06);
+    
+    /* Layout constants */
+    --header-height: 41px;
+    
+    /* Grid debug (off by default) */
+    --grid-debug: 0;
   }
 
   .dark {
-    /* Moon mode */
+    /* Dark mode — Editorial palette */
     --color-background: #0f172a;
-    --color-foreground: #e2e0d8;
-    --color-muted: #64748b;
-    --color-accent: #6b8cae;
-    --color-leaf: #3d5a35;
-    --color-stem: #4a6b42;
+    --color-foreground: #e8e8e8;
+    --color-muted: #9a9a9a;
+    --color-accent: #7a9aaf;
+    --color-rule: rgba(232, 232, 232, 0.06);
   }
 
   html {
@@ -34,12 +96,12 @@
   }
 
   ::selection {
-    background-color: rgba(232, 106, 51, 0.2);
+    background-color: rgba(91, 122, 143, 0.2);
     color: var(--color-foreground);
   }
   
   .dark ::selection {
-    background-color: rgba(107, 140, 174, 0.2);
+    background-color: rgba(122, 154, 175, 0.2);
   }
 
   /* Custom scrollbar */
@@ -70,6 +132,216 @@
 }
 
 @layer components {
+  /* ==============================================
+     GRID CONTAINER
+     ============================================== */
+  
+  /* Base page container with responsive margins */
+  .page-grid {
+    width: 100%;
+    max-width: theme('maxWidth.grid');
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: theme('spacing.margin-mobile');
+    padding-right: theme('spacing.margin-mobile');
+  }
+  
+  @media (min-width: 768px) {
+    .page-grid {
+      padding-left: theme('spacing.margin-tablet');
+      padding-right: theme('spacing.margin-tablet');
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .page-grid {
+      padding-left: theme('spacing.margin-desktop');
+      padding-right: theme('spacing.margin-desktop');
+    }
+  }
+  
+  /* Content container (narrower than full grid) */
+  .content-grid {
+    width: 100%;
+    max-width: theme('maxWidth.content');
+  }
+  
+  /* Prose container (optimal reading width) */
+  .prose-grid {
+    width: 100%;
+    max-width: theme('maxWidth.prose');
+  }
+  
+  /* ==============================================
+     LAYOUT PATTERNS
+     ============================================== */
+  
+  /* Main content + margin notes layout */
+  .layout-with-margin {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: theme('spacing.gutter');
+  }
+  
+  @media (min-width: 1024px) {
+    .layout-with-margin {
+      grid-template-columns: 1fr theme('maxWidth.margin');
+    }
+  }
+  
+  /* Margin notes container */
+  .margin-notes {
+    display: none;
+  }
+  
+  @media (min-width: 1024px) {
+    .margin-notes {
+      display: block;
+      position: sticky;
+      top: theme('spacing.12');
+      align-self: start;
+    }
+  }
+  
+  /* ==============================================
+     SECTION STRUCTURE
+     ============================================== */
+  
+  .section-padding {
+    padding-top: theme('spacing.section');
+    padding-bottom: theme('spacing.section');
+  }
+  
+  .section-padding-sm {
+    padding-top: theme('spacing.section-sm');
+    padding-bottom: theme('spacing.section-sm');
+  }
+  
+  /* ==============================================
+     RULES & DIVIDERS
+     ============================================== */
+  
+  /* Horizontal rule — thin, structural */
+  .rule {
+    height: 1px;
+    background-color: var(--color-rule);
+    border: none;
+    margin: 0;
+  }
+  
+  .rule-strong {
+    height: 1px;
+    background-color: var(--color-foreground);
+    opacity: 0.2;
+  }
+  
+  /* Vertical rule */
+  .rule-vertical {
+    width: 1px;
+    background-color: var(--color-rule);
+    align-self: stretch;
+  }
+  
+  /* ==============================================
+     STRUCTURAL SPINE
+     ============================================== */
+  
+  /* ==============================================
+     STRUCTURAL SPINE
+     ============================================== */
+  
+  /**
+   * Vertical spine line — latent document structure indicator
+   * 
+   * Design constraints:
+   * - Section-scoped segments only (natural gaps between sections)
+   * - Positioned deep in gutter, never near content
+   * - Extremely low contrast (paper grain level)
+   * - Subtle organic imperfection (feels human, not mechanical)
+   * - No animation, no interaction
+   * 
+   * Organic treatment:
+   * - Very slight opacity variation (gradient)
+   * - Imperceptible edge softness (sub-pixel blur)
+   * - Feels like blueprint pencil mark
+   * 
+   * Goal: Noticed only if removed, not while reading.
+   */
+  
+  .with-spine {
+    position: relative;
+  }
+  
+  .with-spine::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      var(--color-foreground) 2%,
+      var(--color-foreground) 98%,
+      transparent 100%
+    );
+    opacity: 0.05;
+    pointer-events: none;
+    filter: blur(0.3px);
+  }
+  
+  @media (min-width: 768px) {
+    .with-spine::before {
+      left: 24px;
+      opacity: 0.05;
+      filter: blur(0.35px);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .with-spine::before {
+      /* Position in gutter, left of content column */
+      left: calc((100vw - 1000px) / 2 - 56px);
+      opacity: 0.04;
+      filter: blur(0.4px);
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .with-spine::before {
+      left: calc((100vw - 1000px) / 2 - 64px);
+      opacity: 0.04;
+      filter: blur(0.4px);
+    }
+  }
+  
+  /* ==============================================
+     TYPOGRAPHY CONTAINERS
+     ============================================== */
+  
+  /**
+   * Prose container — optimized for reading rhythm
+   * 
+   * Reading rhythm refinements:
+   * - Line-height: 1.8 (generous, reduces fatigue)
+   * - Paragraph spacing: 24px (comfortable visual breaks)
+   * - Max-width: 680px (optimal reading line length)
+   */
+  
+  .prose-container {
+    @apply max-w-prose text-body-lg;
+  }
+
+  .prose-container p {
+    @apply mb-6;
+  }
+
+  .prose-container strong {
+    @apply font-semibold;
+  }
+  
+  /* Legacy class name — maps to prose-container */
   .prose-garden {
     @apply max-w-prose text-body-lg;
   }
@@ -82,6 +354,10 @@
     @apply font-semibold;
   }
 
+  /* ==============================================
+     INTERACTIVE ELEMENTS
+     ============================================== */
+  
   .link-underline {
     @apply relative inline-block;
   }
@@ -100,50 +376,28 @@
   .text-balance {
     text-wrap: balance;
   }
-
-  /* Plant animation delays for natural feel */
-  .animate-delay-100 { animation-delay: 0.1s; }
-  .animate-delay-200 { animation-delay: 0.2s; }
-  .animate-delay-300 { animation-delay: 0.3s; }
-  .animate-delay-500 { animation-delay: 0.5s; }
-  .animate-delay-700 { animation-delay: 0.7s; }
-  .animate-delay-1000 { animation-delay: 1s; }
-  .animate-delay-1500 { animation-delay: 1.5s; }
-  .animate-delay-2000 { animation-delay: 2s; }
-}
-
-/* Garden plant animations */
-@keyframes gentle-sway {
-  0%, 100% {
-    transform: rotate(-1.5deg) translateX(0);
+  
+  /* Grid alignment helpers */
+  .align-start { align-items: start; }
+  .align-baseline { align-items: baseline; }
+  
+  /* Debug grid overlay (enable with --grid-debug: 1) */
+  .debug-grid {
+    position: relative;
   }
-  50% {
-    transform: rotate(1.5deg) translateX(1px);
+  
+  .debug-grid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to right,
+      rgba(232, 106, 51, calc(0.05 * var(--grid-debug))),
+      rgba(232, 106, 51, calc(0.05 * var(--grid-debug))) calc(100% / 12 - 12px),
+      transparent calc(100% / 12 - 12px),
+      transparent calc(100% / 12)
+    );
+    pointer-events: none;
+    z-index: 9999;
   }
-}
-
-@keyframes leaf-float {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  25% {
-    transform: translateY(-2px) rotate(1deg);
-  }
-  75% {
-    transform: translateY(1px) rotate(-1deg);
-  }
-}
-
-.plant-sway {
-  animation: gentle-sway 4s ease-in-out infinite;
-  transform-origin: bottom center;
-}
-
-.plant-sway-slow {
-  animation: gentle-sway 6s ease-in-out infinite;
-  transform-origin: bottom center;
-}
-
-.leaf-float {
-  animation: leaf-float 5s ease-in-out infinite;
 }

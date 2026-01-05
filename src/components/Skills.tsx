@@ -1,6 +1,6 @@
 'use client'
 
-import { GardenSection } from './GardenSection'
+import { Section } from './Section'
 import { motion } from 'framer-motion'
 
 const skillGroups = [
@@ -24,25 +24,27 @@ const skillGroups = [
 
 export function Skills() {
   return (
-    <GardenSection gardenDensity="dense" gardenPosition="bottom">
+    <Section spine>
+      <hr className="rule mb-block" />
+      
       <h2 className="font-headline text-section text-foreground mb-10">
         tools & methods
       </h2>
 
-      <div className="max-w-2xl space-y-8">
+      <div className="max-w-prose space-y-6">
         {skillGroups.map((group, index) => (
           <motion.div
             key={group.label}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
           >
             <p className="text-small text-accent mb-2 font-body">{group.label}</p>
-            <p className="text-body text-foreground/75">{group.items}</p>
+            <p className="text-body text-foreground/75 leading-relaxed">{group.items}</p>
           </motion.div>
         ))}
       </div>
-    </GardenSection>
+    </Section>
   )
 }

@@ -1,13 +1,24 @@
 'use client'
 
 import { useTheme } from './ThemeProvider'
-import { Sun } from './Sun'
-import { Moon } from './Moon'
-import { motion } from 'framer-motion'
+
+/**
+ * Header / Navigation
+ * 
+ * Design intent: Infrastructural frame, not content.
+ * Should feel invisible when reading, reassuring when navigating.
+ * 
+ * Key decisions:
+ * - Sticky (not fixed) to respect document flow
+ * - Lower contrast text to not compete with body content
+ * - Compact height to reduce visual dominance
+ * - Hairline divider marks structural boundary
+ * - No motion, shadows, or decorative elements
+ */
 
 const navLinks = [
-  { label: 'me', href: '#about' },
-  { label: 'projects', href: '#projects' },
+  { label: 'about', href: '#about' },
+  { label: 'work', href: '#projects' },
   { label: 'writing', href: '#writing' },
   { label: 'contact', href: '#contact' },
 ]
@@ -16,45 +27,82 @@ export function Header() {
   const { theme, toggleTheme, isTransitioning } = useTheme()
   
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 py-6">
-      <div className="max-w-content mx-auto flex items-center justify-between">
-        {/* Sun/Moon indicator */}
-        <div className="relative w-16 h-16 md:w-20 md:h-20">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Sun size={60} isVisible={theme === 'sun'} />
-          </div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Moon size={50} isVisible={theme === 'moon'} />
-          </div>
-        </div>
-        
-        {/* Navigation */}
-        <nav className="flex items-center gap-6 md:gap-8">
-          {navLinks.map((link) => (
-            <motion.a
-              key={link.href}
-              href={link.href}
-              className="text-body text-foreground/80 hover:text-accent transition-colors duration-200 font-body lowercase"
-              whileHover={{ y: -2 }}
-              transition={{ duration: 0.2 }}
-            >
-              {link.label}
-            </motion.a>
-          ))}
-          
-          {/* Theme toggle */}
-          <motion.button
-            onClick={toggleTheme}
-            disabled={isTransitioning}
-            className="text-body text-accent hover:text-accent/80 transition-colors duration-200 font-body lowercase disabled:opacity-50"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+    <header className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm">
+      {/* Navigation container — aligned to page grid */}
+      <div className="page-grid">
+        <nav 
+          className="flex items-center justify-between py-2 md:py-3"
+          role="navigation"
+          aria-label="Main navigation"
+        >
+          {/* Site identifier — quiet, structural */}
+          <a 
+            href="#" 
+            className="
+              text-caption 
+              font-body 
+              text-foreground/40 
+              hover:text-foreground/60 
+              transition-colors 
+              duration-300
+              tracking-wider
+              uppercase
+            "
           >
-            {theme === 'sun' ? 'moon mode' : 'sun mode'}
-          </motion.button>
+            Anshul Sahai
+          </a>
+          
+          {/* Navigation links — secondary to content */}
+          <div className="flex items-center gap-5 md:gap-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="
+                  text-caption 
+                  text-foreground/40 
+                  hover:text-foreground/60 
+                  transition-colors 
+                  duration-300 
+                  font-body
+                "
+              >
+                {link.label}
+              </a>
+            ))}
+            
+            {/* Subtle separator before theme toggle */}
+            <span className="text-foreground/20 select-none" aria-hidden="true">·</span>
+            
+            {/* Theme toggle — utilitarian, not emphasized */}
+            <button
+              onClick={toggleTheme}
+              disabled={isTransitioning}
+              className="
+                text-caption 
+                text-foreground/30 
+                hover:text-foreground/50 
+                transition-colors 
+                duration-300 
+                font-body 
+                disabled:opacity-50
+              "
+              aria-label={`Switch to ${theme === 'sun' ? 'dark' : 'light'} mode`}
+            >
+              {theme === 'sun' ? 'dark' : 'light'}
+            </button>
+          </div>
         </nav>
+      </div>
+      
+      {/* Hairline divider — structural boundary */}
+      <div className="page-grid">
+        <div 
+          className="h-px bg-foreground/[0.06]" 
+          role="separator" 
+          aria-hidden="true" 
+        />
       </div>
     </header>
   )
 }
-

@@ -1,6 +1,6 @@
 'use client'
 
-import { GardenSection } from './GardenSection'
+import { Section } from './Section'
 import { ProjectBlock } from './ProjectBlock'
 
 const projects = [
@@ -38,14 +38,18 @@ const projects = [
 
 export function SelectedWork() {
   return (
-    <GardenSection id="projects" gardenDensity="dense" gardenPosition="bottom">
-      <h2 className="font-headline text-section text-foreground mb-10">
+    <Section id="projects" spine>
+      <hr className="rule mb-8" />
+      
+      <h2 className="font-headline text-section text-foreground mb-8">
         selected work
       </h2>
 
-      {projects.map((project) => (
-        <ProjectBlock key={project.name} {...project} />
-      ))}
-    </GardenSection>
+      <div className="space-y-5">
+        {projects.map((project) => (
+          <ProjectBlock key={project.name} {...project} />
+        ))}
+      </div>
+    </Section>
   )
 }

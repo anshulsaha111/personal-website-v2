@@ -15,7 +15,7 @@ export function ScrollCTA({ className = '' }: ScrollCTAProps) {
       transition={{ delay: 1, duration: 0.6 }}
     >
       <span className="text-small text-muted font-body">
-        scroll to enter the garden
+        scroll to explore
       </span>
       
       <motion.svg
