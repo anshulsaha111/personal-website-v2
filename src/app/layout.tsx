@@ -42,10 +42,26 @@ const themeScript = `
 `
 
 const scrollScript = `
-  if (window.history && 'scrollRestoration' in window.history) {
-    window.history.scrollRestoration = 'manual';
-  }
-  window.scrollTo(0, 0);
+  (function() {
+    if (window.history && 'scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    
+    // Run again after DOM ready and after a short delay
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        window.scrollTo(0, 0);
+      });
+    }
+    
+    window.addEventListener('load', function() {
+      window.scrollTo(0, 0);
+      setTimeout(function() { window.scrollTo(0, 0); }, 0);
+      setTimeout(function() { window.scrollTo(0, 0); }, 100);
+    });
+  })();
 `
 
 export default function RootLayout({

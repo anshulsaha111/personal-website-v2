@@ -130,10 +130,10 @@ export function Contact() {
       
       {/* Footer rule */}
       <div className="max-w-content mx-auto">
-        <hr className="rule mt-section" />
-        <p className="text-caption text-muted text-center mt-element">
-          Designed & built with intention 🤎
-        </p>
+      <hr className="rule mt-section" />
+      <p className="text-caption text-muted text-center mt-element">
+        Designed & built with intention 🤎
+      </p>
       </div>
     </Section>
   )
