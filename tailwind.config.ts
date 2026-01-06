@@ -34,7 +34,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        headline: ['var(--font-headline)', 'Georgia', 'serif'],
+        headline: ['var(--font-headline)', 'system-ui', 'sans-serif'],
         body: ['var(--font-body)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
@@ -80,17 +80,17 @@ const config: Config = {
         '12': '96px',      // 12 base
         '16': '128px',     // 16 base
         
-        // Semantic spacing
+        // Semantic spacing (per DESIGN_CONTEXT.md)
         'gutter': '24px',                          // Column gutter
         'margin-mobile': '24px',                   // Page margin (mobile)
         'margin-tablet': '48px',                   // Page margin (tablet)
         'margin-desktop': '64px',                  // Page margin (desktop)
-        'section': 'clamp(64px, 8vh, 96px)',       // Between sections (reduced ~20%)
-        'section-sm': 'clamp(45px, 6vh, 64px)',    // Smaller section gap (reduced ~20%)
-        'block': '32px',                           // Between content blocks (reduced ~20%)
-        'element': '16px',                         // Between elements (reduced ~20%)
-        'tight': '10px',                           // Tight element spacing (reduced ~17%)
-        'micro': '6px',                            // Micro adjustments
+        'section': 'clamp(96px, 10vh, 144px)',     // Between sections (96-144px responsive)
+        'section-sm': 'clamp(64px, 7vh, 96px)',    // Smaller section gap
+        'block': '48px',                           // Between content blocks
+        'element': '24px',                         // Between elements
+        'tight': '16px',                           // Tight element spacing
+        'micro': '8px',                            // Micro adjustments
         'header': '41px',                          // Header height (reserved)
       },
       

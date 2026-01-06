@@ -19,11 +19,11 @@ export function Contact() {
   }
   return (
     <Section id="contact" width="full" className="pb-16">
-      <hr className="rule mb-6" />
+      <hr className="rule mb-5" />
       
-      <div className="text-center max-w-prose mx-auto">
+      <div className="text-center max-w-content mx-auto">
         <motion.h2
-          className="font-headline text-section text-foreground mb-6"
+          className="font-headline text-section text-foreground mb-5"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -129,10 +129,12 @@ export function Contact() {
       </div>
       
       {/* Footer rule */}
-      <hr className="rule mt-section" />
-      <p className="text-caption text-muted text-center mt-element">
-        Designed & built with intention 🤎
-      </p>
+      <div className="max-w-content mx-auto">
+        <hr className="rule mt-section" />
+        <p className="text-caption text-muted text-center mt-element">
+          Designed & built with intention 🤎
+        </p>
+      </div>
     </Section>
   )
 }

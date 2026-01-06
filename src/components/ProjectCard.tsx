@@ -22,13 +22,18 @@ export function ProjectCard({
   return (
     <div className="border border-foreground/[0.06] rounded overflow-hidden group">
       {/* Preview */}
-      <div className="relative h-[160px] border-b border-foreground/[0.06] overflow-hidden">
+      <div className="relative h-[160px] border-b border-foreground/[0.06] overflow-hidden bg-foreground/5">
         {previewUrl ? (
           <iframe
             src={previewUrl}
             title={`${title} preview`}
             loading="lazy"
-            className="w-full h-full border-0 pointer-events-none"
+            scrolling="no"
+            className="absolute top-0 left-0 w-[1200px] h-[800px] border-0 pointer-events-none origin-top-left"
+            style={{ 
+              transform: 'scale(0.3)',
+              transformOrigin: 'top left'
+            }}
           />
         ) : previewImage ? (
           <img
@@ -54,18 +59,24 @@ export function ProjectCard({
         <div className="flex items-center gap-6 text-caption">
           <Link
             href={caseStudyUrl}
-            className="text-foreground/40 hover:text-foreground/60 transition-colors duration-300 tracking-wide"
+            className="group/link text-foreground/40 hover:text-foreground/60 transition-colors duration-300 tracking-wide hover:underline underline-offset-4"
           >
-            View case study →
+            View case study{' '}
+            <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-[2px]">
+              →
+            </span>
           </Link>
           {liveUrl && (
             <a
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-foreground/40 hover:text-foreground/60 transition-colors duration-300 tracking-wide"
+              className="group/link text-foreground/40 hover:text-foreground/60 transition-colors duration-300 tracking-wide hover:underline underline-offset-4"
             >
-              Open live →
+              Open live{' '}
+              <span className="inline-block transition-transform duration-300 group-hover/link:translate-x-[2px]">
+                →
+              </span>
             </a>
           )}
         </div>

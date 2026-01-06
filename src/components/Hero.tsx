@@ -27,7 +27,7 @@ export function Hero() {
       <div className="relative z-10 text-center max-w-prose mx-auto px-6 py-8 md:py-12">
         {/* Greeting - recedes into background */}
         <motion.p
-          className="font-body text-body text-muted mb-6 tracking-wide"
+          className="font-body text-body-lg text-muted/85 mb-6 tracking-wide"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -46,12 +46,12 @@ export function Hero() {
           <br />
           <span className="font-bold">ai systems</span>
           <br />
-          that scale
+          that work at scale
         </motion.h1>
         
         {/* Role descriptor - secondary, muted */}
         <motion.p
-          className="font-body text-small text-muted tracking-wide"
+          className="font-body text-body text-muted/85 tracking-wide"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}

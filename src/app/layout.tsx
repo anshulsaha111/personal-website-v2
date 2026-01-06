@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Work_Sans, Libre_Baskerville } from 'next/font/google'
+import { Work_Sans, Inter } from 'next/font/google'
 import { ThemeProvider } from '@/components/ThemeProvider'
 import './globals.css'
 
@@ -10,11 +10,10 @@ const headline = Work_Sans({
   display: 'swap',
 })
 
-const body = Libre_Baskerville({
+const body = Inter({
   subsets: ['latin'],
   variable: '--font-body',
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 })
 
@@ -30,6 +29,18 @@ export const metadata: Metadata = {
   },
 }
 
+// Script to set theme before page renders (prevents flash)
+const themeScript = `
+  (function() {
+    try {
+      var theme = localStorage.getItem('garden-theme');
+      if (theme === 'moon') {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (e) {}
+  })();
+`
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,6 +48,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${headline.variable} ${body.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
         <ThemeProvider>
           {children}

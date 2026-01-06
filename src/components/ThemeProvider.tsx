@@ -27,16 +27,20 @@ interface ThemeProviderProps {
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>('sun')
   const [isTransitioning, setIsTransitioning] = useState(false)
-  const [mounted, setMounted] = useState(false)
 
-  // Load theme from localStorage on mount
+  // Load theme from localStorage on mount and reset scroll
   useEffect(() => {
-    setMounted(true)
+    // Reset scroll to top on initial load
+    window.scrollTo(0, 0)
+    
+    // Load saved theme
     const savedTheme = localStorage.getItem('garden-theme') as Theme | null
     if (savedTheme && (savedTheme === 'sun' || savedTheme === 'moon')) {
       setTheme(savedTheme)
       if (savedTheme === 'moon') {
         document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
       }
     }
   }, [])
@@ -62,17 +66,6 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
         setIsTransitioning(false)
       }, 500)
     }, 300) // Delay for sun/moon animation to start
-  }
-
-  // Prevent flash of wrong theme
-  if (!mounted) {
-    return (
-      <ThemeContext.Provider value={{ theme: 'sun', toggleTheme: () => {}, isTransitioning: false }}>
-        <div style={{ visibility: 'hidden' }}>
-          {children}
-        </div>
-      </ThemeContext.Provider>
-    )
   }
 
   return (

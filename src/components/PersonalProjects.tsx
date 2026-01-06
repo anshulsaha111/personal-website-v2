@@ -18,9 +18,9 @@ const projects = [
 export function PersonalProjects() {
   return (
     <Section spine width="full">
-      <hr className="rule mb-6" />
+      <hr className="rule mb-5" />
 
-      <h2 className="font-headline text-section text-foreground mb-6">
+      <h2 className="font-headline text-section text-foreground mb-5">
         personal projects
       </h2>
 

@@ -6,16 +6,29 @@ export default function WritingLayout({
   children: React.ReactNode
 }) {
   return (
-    <main className="min-h-screen page-grid section-padding bg-background">
-      <div className="max-w-prose">
+    <main className="min-h-screen bg-background">
+      {/* Navigation Bar */}
+      <nav className="page-grid py-8">
         <Link
           href="/"
-          className="inline-block text-small text-muted hover:text-accent transition-colors duration-200 mb-block font-body"
+          className="inline-flex items-center gap-2 text-caption uppercase tracking-wide text-muted hover:text-foreground transition-colors duration-300 font-body"
         >
-          ← back home
+          <span>←</span>
+          <span>Back to Home</span>
         </Link>
-        <article className="prose-container">{children}</article>
+      </nav>
+
+      {/* Structural Divider */}
+      <div className="page-grid">
+        <div className="rule" />
       </div>
+
+      {/* Article Container */}
+      <article className="page-grid py-section">
+        <div className="max-w-[850px] mx-auto">
+          {children}
+        </div>
+      </article>
     </main>
   )
 }

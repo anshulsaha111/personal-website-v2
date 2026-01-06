@@ -72,12 +72,12 @@ export function SelectedWork() {
   }
 
   return (
-    <Section id="projects" spine width="full">
-      <hr className="rule mb-6" />
-      
-      <h2 className="font-headline text-section text-foreground mb-6">
-        selected work
-      </h2>
+      <Section id="projects" spine width="full">
+        <hr className="rule mb-5" />
+        
+        <h2 className="font-headline text-section text-foreground mb-5">
+          selected work
+        </h2>
 
       <div className="space-y-0">
         {projects.map((project, index) => {

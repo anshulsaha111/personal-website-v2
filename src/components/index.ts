@@ -4,7 +4,6 @@ export { ThemeProvider, useTheme } from './ThemeProvider'
 // Layout
 export { Header } from './Header'
 export { Section } from './Section'
-export { ScrollCTA } from './ScrollCTA'
 
 // Sections
 export { Hero } from './Hero'
@@ -17,6 +16,7 @@ export { PersonalProjects } from './PersonalProjects'
 export { ProjectCard } from './ProjectCard'
 export { WritingItem } from './WritingItem'
 export { Writing } from './Writing'
-export { Timeline } from './Timeline'
-export { Beliefs } from './Beliefs'
 export { Contact } from './Contact'
+
+// Article Components
+export { ArticleHeader } from './ArticleHeader'

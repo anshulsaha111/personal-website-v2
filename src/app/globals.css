@@ -340,19 +340,6 @@
   .prose-container strong {
     @apply font-semibold;
   }
-  
-  /* Legacy class name — maps to prose-container */
-  .prose-garden {
-    @apply max-w-prose text-body-lg;
-  }
-
-  .prose-garden p {
-    @apply mb-6;
-  }
-
-  .prose-garden strong {
-    @apply font-semibold;
-  }
 
   /* ==============================================
      INTERACTIVE ELEMENTS

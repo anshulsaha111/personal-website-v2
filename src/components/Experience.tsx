@@ -12,17 +12,29 @@ const roles = [
 export function Experience() {
   return (
     <Section id="experience" spine width="full">
-      <hr className="rule mb-6" />
+      <hr className="rule mb-5" />
       
-      <h2 className="font-headline text-section text-foreground mb-6">
-        experience
-      </h2>
+      <div className="flex items-baseline justify-between mb-5">
+        <h2 className="font-headline text-section text-foreground">
+          experience
+        </h2>
+        <a
+          href="/resume.pdf"
+          download="Anshul_Sahai_Resume.pdf"
+          className="group text-small text-accent hover:text-accent/80 transition-colors duration-300 font-medium tracking-wide hover:underline underline-offset-4"
+        >
+          download resume{' '}
+          <span className="inline-block transition-transform duration-300 group-hover:translate-y-[2px]">
+            ↓
+          </span>
+        </a>
+      </div>
 
       <div className="space-y-0">
         {roles.map((role, index) => (
           <div
             key={index}
-            className="flex flex-col sm:flex-row sm:items-baseline sm:gap-3 py-3 border-b border-foreground/6 last:border-b-0"
+            className="flex flex-col sm:flex-row sm:items-baseline sm:gap-3 py-2.5 border-b border-foreground/6 last:border-b-0"
           >
             <p className="text-body-lg text-foreground font-semibold">
               {role.title}
@@ -38,7 +50,7 @@ export function Experience() {
       </div>
 
       <p className="text-small text-muted/70 mt-5">
-      I've had the opportunity to work with amazing people on amazing projects. Each role has shaped me & taught me how to think about building products & audience.
+      Each role has shaped me & taught me how to think about building products & audience.
       </p>
     </Section>
   )

@@ -1,34 +1,116 @@
+import { ArticleHeader } from '@/components'
+
 # Why Most AI Products Fail at Launch
 
-There's a pattern I've seen across dozens of AI launches. The demo is magical. The pilot goes well. Then you ship to production and everything falls apart.
+<ArticleHeader date="January 2026" readingTime="6 min read" />
+
+There's a pattern I've seen across dozens of AI launches.  
+The demo is magical. The pilot goes well. Then you ship to production and everything falls apart.
+
+The model did not suddenly get worse.  
+Reality just showed up.
 
 ## The Demo Problem
 
-Demos are optimized for the happy path. They show what the model *can* do, not what it *will* do when faced with the chaos of real user input.
+Demos are optimized for the happy path. They show what the model can do, not what it will do when faced with the chaos of real user input.
 
-Every AI product team eventually learns this lesson. The question is whether they learn it before or after launch.
+Carefully curated prompts. Clean data. A product manager standing nearby to explain away odd behavior.
+
+None of that exists in production.
+
+Real users do not read instructions. They paste half baked queries, ask ambiguous questions, and expect instant results. They also do not care that the model is state of the art if it is slow, wrong, or confusing.
+
+Every AI product team eventually learns this lesson.  
+The only question is whether they learn it before or after launch.
 
 ## What Actually Goes Wrong
 
-The failure modes are predictable:
+The failure modes are predictable.
 
-**Data drift.** The training data looks nothing like production data. Users type things you never imagined. Edge cases aren't edge cases—they're 30% of your traffic.
+### Data Drift Is Not an Edge Case
 
-**Latency expectations.** That 2-second response time felt fine in demos. In production, users click away after 500ms.
+Training data almost never looks like production data.
 
-**Trust calibration.** Users either trust the AI too much or not at all. Neither is good.
+Users type things you did not anticipate. They mix contexts, use shorthand, and bring in assumptions that never showed up during model development. What you thought were edge cases quickly become a meaningful chunk of traffic.
+
+If your system only works when users behave, it does not work.
+
+### Latency Kills Trust Faster Than Errors
+
+That two second response time felt fine in demos.
+
+In production, users click away after a few hundred milliseconds. They retry. They refresh. They assume the system is broken even if it eventually returns the right answer.
+
+AI teams often treat latency as an engineering optimization problem. Users experience it as a reliability problem.
+
+A slow correct answer feels worse than a fast imperfect one.
+
+### Trust Is Almost Always Miscalibrated
+
+Users either trust the AI too much or not at all.
+
+Over trust leads to silent failures. Decisions get made based on incorrect outputs that no one double checks.
+
+Under trust leads to abandonment. The system becomes an expensive toy that no one relies on.
+
+Most AI products do very little to actively shape how much users should trust the output. They just hope users figure it out.
+
+They do not.
+
+### Evaluation Stops Too Early
+
+Offline metrics look great. Accuracy is high. Benchmarks are passed.
+
+Then the product ships and no one knows if things are getting better or worse.
+
+Many teams stop evaluating once the model is deployed. In reality, that is when evaluation becomes most important.
+
+If you cannot measure quality in production, you are flying blind.
 
 ## Building for Survival
 
-The products that survive contact with real users share a few traits:
+The products that survive contact with real users share a few unglamorous traits.
 
-1. They ship with monitoring from day one
-2. They have graceful degradation built in
-3. They set expectations correctly upfront
+### They Treat Monitoring as a Feature
 
-None of this is glamorous. But it's the difference between a demo and a product.
+They ship with monitoring from day one.
 
----
+Not just infrastructure metrics, but product metrics. Failure rates. Latency distributions. User corrections. Fallback usage.
 
-*This is where the rest of the essay would go. Currently stubbed for development.*
+They know when the system is struggling before users complain.
 
+### They Design for Graceful Failure
+
+They assume the model will fail and plan accordingly.
+
+Fallbacks. Defaults. Clear error states. Human review for high risk decisions.
+
+The goal is not perfection. The goal is to fail in ways that do not break user trust.
+
+### They Set Expectations Early and Honestly
+
+Good AI products tell users what the system is good at and what it is not.
+
+They explain uncertainty. They show confidence levels. They make it clear when human judgment is still required.
+
+This is not a UX nice to have. It is core to adoption.
+
+### They Ship Incrementally
+
+They do not launch everything at once.
+
+They start with narrow use cases. They roll out gradually. They learn from real usage before expanding scope.
+
+Most AI failures are not model failures. They are scope failures.
+
+## Demo Versus Product
+
+Building a demo is about showcasing capability.
+
+Building a product is about surviving reality.
+
+The gap between the two is where most AI products die.
+
+The teams that succeed are not the ones with the most impressive models. They are the ones who design for messiness, uncertainty, and human behavior from day one.
+
+That is the difference between something that looks magical in a demo and something people actually rely on in production.

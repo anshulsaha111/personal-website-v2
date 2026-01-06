@@ -5,8 +5,10 @@ import { Section } from './Section'
 export function WhoIAm() {
   return (
     <Section id="about" width="content" spine>
+      <hr className="rule mb-5" />
+      
       <div className="max-w-prose">
-        <h2 className="font-headline text-section text-foreground mb-6">
+        <h2 className="font-headline text-section text-foreground mb-5">
           who am i
         </h2>
         
