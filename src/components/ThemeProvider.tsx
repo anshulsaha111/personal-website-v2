@@ -30,8 +30,12 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
   // Load theme from localStorage on mount and reset scroll
   useEffect(() => {
-    // Reset scroll to top on initial load
-    window.scrollTo(0, 0)
+    // Aggressively reset scroll to top
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0)
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+    }
     
     // Load saved theme
     const savedTheme = localStorage.getItem('garden-theme') as Theme | null
@@ -43,6 +47,16 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
         document.documentElement.classList.remove('dark')
       }
     }
+    
+    // Also reset on page show (handles back/forward navigation)
+    const handlePageShow = (event: PageTransitionEvent) => {
+      if (event.persisted) {
+        window.scrollTo(0, 0)
+      }
+    }
+    
+    window.addEventListener('pageshow', handlePageShow)
+    return () => window.removeEventListener('pageshow', handlePageShow)
   }, [])
 
   const toggleTheme = () => {

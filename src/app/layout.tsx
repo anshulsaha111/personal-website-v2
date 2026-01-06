@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
 }
 
-// Script to set theme before page renders (prevents flash)
+// Scripts to run before page renders
 const themeScript = `
   (function() {
     try {
@@ -41,6 +41,13 @@ const themeScript = `
   })();
 `
 
+const scrollScript = `
+  if (window.history && 'scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+`
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -50,6 +57,7 @@ export default function RootLayout({
     <html lang="en" className={`${headline.variable} ${body.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: scrollScript }} />
       </head>
       <body>
         <ThemeProvider>
