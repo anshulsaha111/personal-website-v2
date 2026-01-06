@@ -20,6 +20,11 @@ const body = Inter({
 export const metadata: Metadata = {
   title: 'anshul sahai',
   description: 'I build AI systems that scale. Product Manager, builder, data scientist, thinker.',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
   icons: {
     icon: [
       {
