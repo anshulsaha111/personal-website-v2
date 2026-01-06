@@ -27,6 +27,30 @@ export const metadata: Metadata = {
       },
     ],
   },
+  metadataBase: new URL('https://anshulsahai.vercel.app/'), // Replace with your actual domain
+  openGraph: {
+    title: 'anshul sahai',
+    description: 'personal website of anshul sahai, full-time product manager & part-time builder',
+    url: 'https://anshulsahai.vercel.app/', // Replace with your actual domain
+    siteName: 'anshul sahai',
+    images: [
+      {
+        url: '/og-image.png', // You'll need to add this image to your public folder
+        width: 1200,
+        height: 630,
+        alt: 'anshul sahai - AI Product Manager and Builder',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'anshul sahai',
+    description: 'personal website of anshul sahai, full-time product manager & part-time builder',
+    images: ['/og-image.png'], // You'll need to add this image to your public folder
+    creator: '@anshulsaha111', // Uncomment and add your Twitter handle if you have one
+  },
 }
 
 // Scripts to run before page renders
