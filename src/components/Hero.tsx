@@ -44,9 +44,9 @@ export function Hero() {
         >
           i build
           <br />
-          <span className="font-bold">production ai systems</span>
+          <span className="font-bold">ai systems</span>
           <br />
-          from problem → scale
+          that work at scale
         </motion.h1>
         
         {/* Role descriptor - secondary, muted */}
