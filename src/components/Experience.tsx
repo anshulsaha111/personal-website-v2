@@ -14,14 +14,14 @@ export function Experience() {
     <Section id="experience" spine width="full">
       <hr className="rule mb-5" />
       
-      <div className="flex items-baseline justify-between mb-5">
+      <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3 sm:gap-0 mb-5">
         <h2 className="font-headline text-section text-foreground">
           experience
         </h2>
         <a
           href="/resume.pdf"
           download="Anshul_Sahai_Resume.pdf"
-          className="group text-small text-accent hover:text-accent/80 transition-colors duration-300 font-medium tracking-wide hover:underline underline-offset-4"
+          className="group text-small text-accent hover:text-accent/80 transition-colors duration-300 font-medium tracking-wide hover:underline underline-offset-4 whitespace-nowrap"
         >
           download resume{' '}
           <span className="inline-block transition-transform duration-300 group-hover:translate-y-[2px]">

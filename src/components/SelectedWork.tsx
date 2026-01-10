@@ -151,7 +151,7 @@ export function SelectedWork() {
                     }}
                     className="overflow-hidden"
                   >
-                    <div className="pb-6 pl-0 pr-24">
+                    <div className="pb-6 pl-0 pr-0 sm:pr-12 md:pr-24">
                       <p className="text-body text-foreground/85 mb-3 leading-relaxed">
                         {project.description}
                       </p>

@@ -1,6 +1,5 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 /**
@@ -17,59 +16,19 @@ import { motion } from 'framer-motion'
  *   greeting (recedes)
  *   i build
  *   ai systems (natural emphasis through position + weight)
- *   that scale
+ *   from problem → scale
  *   role descriptor (recedes)
  */
 
 export function Hero() {
-  const [typewriterText, setTypewriterText] = useState('')
-  const fullText = 'problem → scale'
-  
-  useEffect(() => {
-    let currentIndex = 0
-    let isDeleting = false
-    const typingSpeed = 50 // Fast typing speed (50ms per character)
-    const deletingSpeed = 30 // Faster deleting
-    const pauseAfterComplete = 2000 // Pause before deleting
-    const pauseAfterDelete = 500 // Pause before retyping
-    const startDelay = 700 // Start after initial animations
-    
-    const startTyping = setTimeout(() => {
-      const typewriterLoop = () => {
-        if (!isDeleting && currentIndex <= fullText.length) {
-          // Typing forward
-          setTypewriterText(fullText.slice(0, currentIndex))
-          currentIndex++
-          setTimeout(typewriterLoop, typingSpeed)
-        } else if (!isDeleting && currentIndex > fullText.length) {
-          // Pause, then start deleting
-          isDeleting = true
-          setTimeout(typewriterLoop, pauseAfterComplete)
-        } else if (isDeleting && currentIndex > 0) {
-          // Deleting
-          currentIndex--
-          setTypewriterText(fullText.slice(0, currentIndex))
-          setTimeout(typewriterLoop, deletingSpeed)
-        } else if (isDeleting && currentIndex === 0) {
-          // Pause, then start typing again
-          isDeleting = false
-          setTimeout(typewriterLoop, pauseAfterDelete)
-        }
-      }
-      
-      typewriterLoop()
-    }, startDelay)
-    
-    return () => clearTimeout(startTyping)
-  }, [])
   
   return (
     <section className="relative min-h-[calc(100vh-41px)] flex flex-col items-center justify-center w-full">
       {/* Main content - centered */}
-      <div className="relative z-10 text-center max-w-prose mx-auto px-6 py-8 md:py-12">
+      <div className="relative z-10 text-center max-w-prose mx-auto px-4 sm:px-6 py-6 sm:py-8 md:py-12">
         {/* Greeting - recedes into background */}
         <motion.p
-          className="font-body text-body-lg text-muted/85 mb-6 tracking-wide"
+          className="font-body text-body sm:text-body-lg text-muted/85 mb-4 sm:mb-6 tracking-wide"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -79,28 +38,24 @@ export function Hero() {
         
         {/* Headline - structured with deliberate line breaks */}
         <motion.h1
-          className="font-headline text-hero text-foreground leading-[1.1] mb-6 font-light"
+          className="font-headline text-hero text-foreground leading-[1.15] sm:leading-[1.1] mb-5 sm:mb-6 font-light text-center"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          i build
-          <br />
-          <span className="font-bold">ai systems</span>
-          <br />
-          from <span className="inline-block min-h-[1.2em]">
-            {typewriterText}
-            <span className="inline-block w-0.5 h-[0.9em] bg-foreground/60 ml-0.5 animate-pulse" />
-          </span>
+          <span className="block">i build</span>
+          <span className="block font-bold">ai systems</span>
+          <span className="block whitespace-nowrap relative -left-[0.78em]">from problem → scale</span>
         </motion.h1>
         
         {/* Role descriptor - secondary, muted */}
         <motion.p
-          className="font-body text-body text-muted/85 tracking-wide"
+          className="font-body text-small sm:text-body text-muted/85 tracking-wide px-4 sm:px-0"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-        > product manager · gtm & adoption · builder 
+        >
+          product manager · gtm & adoption · builder 
         </motion.p>
       </div>
     </section>

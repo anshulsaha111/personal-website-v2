@@ -16,9 +16,9 @@ const capabilities = [
 export function WhatIHelpWith() {
   return (
     <Section spine>
-      <hr className="rule mb-8" />
+      <hr className="rule mb-5 sm:mb-8" />
       
-      <h2 className="font-headline text-section text-foreground mb-8">
+      <h2 className="font-headline text-section text-foreground mb-5 sm:mb-8">
         what i help with 
       </h2>
 

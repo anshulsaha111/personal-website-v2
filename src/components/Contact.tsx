@@ -29,22 +29,22 @@ export function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
-          working on something ambitious?
+          let's talk
         </motion.h2>
 
         <motion.p
-          className="text-body-lg text-foreground/75 mb-7 leading-relaxed"
+          className="text-body sm:text-body-lg text-foreground/75 mb-7 leading-relaxed px-4 sm:px-0"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.1 }}
         >
           I work at the intersection of AI, product, and execution.
-          If you’re building or scaling an AI product, or thinking through evaluation, or adoption - I’m happy to chat.
+          If you're building or scaling an AI product, or want to exchange notes & ideas - I'm happy to chat.
         </motion.p>
 
         <motion.div
-          className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-body text-muted"
+          className="flex flex-wrap justify-center gap-x-4 sm:gap-x-8 gap-y-3 text-body text-muted px-4 sm:px-0"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

@@ -79,15 +79,20 @@ export function Header() {
               duration-300
               tracking-wider
               uppercase
+              whitespace-nowrap
             "
           >
-            Anshul Sahai
+            <span className="hidden sm:inline">Anshul Sahai</span>
+            <span className="sm:hidden">AS</span>
           </a>
           
           {/* Navigation links — secondary to content */}
-          <div className="flex items-center gap-5 md:gap-6">
+          <div className="flex items-center gap-2 sm:gap-3 md:gap-6">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href
+              // Hide "about" and "experience" on mobile to prevent overcrowding
+              const hideOnMobile = link.label === 'about' || link.label === 'experience'
+              
               return (
               <a
                 key={link.href}
@@ -100,6 +105,8 @@ export function Header() {
                   duration-300 
                   font-body
                     pb-0.5
+                    whitespace-nowrap
+                    ${hideOnMobile ? 'hidden sm:inline-block' : ''}
                   `}
               >
                 {link.label}
@@ -118,6 +125,7 @@ export function Header() {
                 transition-colors 
                 duration-300 
                 disabled:opacity-50
+                ml-1
               "
               aria-label={`Switch to ${theme === 'sun' ? 'dark' : 'light'} mode`}
             >
