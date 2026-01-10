@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 /**
@@ -21,6 +22,47 @@ import { motion } from 'framer-motion'
  */
 
 export function Hero() {
+  const [typewriterText, setTypewriterText] = useState('')
+  const fullText = 'problem → scale'
+  
+  useEffect(() => {
+    let currentIndex = 0
+    let isDeleting = false
+    const typingSpeed = 50 // Fast typing speed (50ms per character)
+    const deletingSpeed = 30 // Faster deleting
+    const pauseAfterComplete = 2000 // Pause before deleting
+    const pauseAfterDelete = 500 // Pause before retyping
+    const startDelay = 700 // Start after initial animations
+    
+    const startTyping = setTimeout(() => {
+      const typewriterLoop = () => {
+        if (!isDeleting && currentIndex <= fullText.length) {
+          // Typing forward
+          setTypewriterText(fullText.slice(0, currentIndex))
+          currentIndex++
+          setTimeout(typewriterLoop, typingSpeed)
+        } else if (!isDeleting && currentIndex > fullText.length) {
+          // Pause, then start deleting
+          isDeleting = true
+          setTimeout(typewriterLoop, pauseAfterComplete)
+        } else if (isDeleting && currentIndex > 0) {
+          // Deleting
+          currentIndex--
+          setTypewriterText(fullText.slice(0, currentIndex))
+          setTimeout(typewriterLoop, deletingSpeed)
+        } else if (isDeleting && currentIndex === 0) {
+          // Pause, then start typing again
+          isDeleting = false
+          setTimeout(typewriterLoop, pauseAfterDelete)
+        }
+      }
+      
+      typewriterLoop()
+    }, startDelay)
+    
+    return () => clearTimeout(startTyping)
+  }, [])
+  
   return (
     <section className="relative min-h-[calc(100vh-41px)] flex flex-col items-center justify-center w-full">
       {/* Main content - centered */}
@@ -46,7 +88,10 @@ export function Hero() {
           <br />
           <span className="font-bold">ai systems</span>
           <br />
-          that work at scale
+          from <span className="inline-block min-h-[1.2em]">
+            {typewriterText}
+            <span className="inline-block w-0.5 h-[0.9em] bg-foreground/60 ml-0.5 animate-pulse" />
+          </span>
         </motion.h1>
         
         {/* Role descriptor - secondary, muted */}
